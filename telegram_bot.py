@@ -3,6 +3,7 @@ import logging
 from datetime import datetime, date
 import io
 import pandas as pd
+import os
 
 from telegram import Bot, Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ApplicationBuilder, CommandHandler, CallbackQueryHandler, ContextTypes
@@ -25,7 +26,7 @@ logging.getLogger("httpx").setLevel(logging.WARNING)
 # ==========================================
 # PASTE YOUR TOKEN FROM BOTFATHER HERE
 # ==========================================
-TOKEN = "8917628325:AAHF-5tsam3psttCnDytB_wKxcKqPTfQ9sg"
+TOKEN = os.getenv("TELEGRAM_TOKEN")
 
 
 # ==========================================

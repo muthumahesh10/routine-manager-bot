@@ -21,5 +21,37 @@ services:
       - "6379:6379"
     restart: always
 
+  bot:
+    build: .
+    container_name: routine_bot
+    env_file:
+      - .env
+    depends_on:
+      - db
+      - redis
+    restart: always
+
+  worker:
+    build: .
+    container_name: routine_worker
+    command: celery -A tasks worker --loglevel=info
+    env_file:
+      - .env
+    depends_on:
+      - db
+      - redis
+    restart: always
+
+  beat:
+    build: .
+    container_name: routine_beat
+    command: celery -A tasks beat --loglevel=info
+    env_file:
+      - .env
+    depends_on:
+      - db
+      - redis
+    restart: always
+
 volumes:
   postgres_data:

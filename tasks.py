@@ -22,7 +22,7 @@ celery_app.conf.timezone = 'Asia/Kolkata'
 # PASTE YOUR TOKEN FROM BOTFATHER HERE
 # (It needs to be here as well to send background alerts)
 # ==========================================
-TOKEN = "8917628325:AAHF-5tsam3psttCnDytB_wKxcKqPTfQ9sg"
+TOKEN = os.getenv("TELEGRAM_TOKEN")
 
 
 # ==========================================
